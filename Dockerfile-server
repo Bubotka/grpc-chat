@@ -6,7 +6,7 @@ COPY go.sum .
 
 RUN go mod download && apk add --no-cache ca-certificates
 
-COPY . .
+COPY grpc-chat-main .
 
 RUN CGO_ENABLED=0 GOOS=linux go build -o main ./cmd/grpc_server/main.go
 

@@ -10,7 +10,7 @@ services:
 
   server:
     build:
-      context: .
+      context: grpc-chat-main
       dockerfile: Dockerfile-server
     container_name: go-grpc-server
     env_file:
