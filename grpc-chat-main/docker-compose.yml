@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+#  client:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile-client
+#    container_name: go-grpc-client
+#    depends_on:
+#      - server
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile-server
+    container_name: go-grpc-server
+    env_file:
+      - .env
+    ports:
+      - "${GRPC_PORT}:${GRPC_PORT}"
+
+
