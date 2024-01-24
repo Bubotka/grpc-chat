@@ -8,9 +8,9 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
-	"gitlab.com/Alexandrhub/grpc-chat/config"
-	"gitlab.com/Alexandrhub/grpc-chat/gen/pb"
-	gpt "gitlab.com/Alexandrhub/grpc-chat/pkg/chat-gpt"
+	"github.com/Bubotka/grpc-chat/config"
+	"github.com/Bubotka/grpc-chat/gen/pb"
+	gpt "github.com/Bubotka/grpc-chat/pkg/chat-gpt"
 )
 
 type ChatGptServer struct {
@@ -19,7 +19,7 @@ type ChatGptServer struct {
 	aiClient     *openai.Client
 	prevPrompts  []gpt.RequestMessage
 	cfg          config.Config
-	// client       *gpt.ChatGptClient
+	//client       *gpt.ChatGptClient
 }
 
 func NewChatGptServer(cfg config.Config, systemPrompt string) *ChatGptServer {

@@ -1,4 +1,4 @@
-module gitlab.com/Alexandrhub/grpc-chat
+module github.com/Bubotka/grpc-chat
 
 go 1.19
 

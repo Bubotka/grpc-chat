@@ -10,8 +10,8 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"gitlab.com/Alexandrhub/grpc-chat/gen/pb"
-	gpt "gitlab.com/Alexandrhub/grpc-chat/pkg/chat-gpt"
+	"github.com/Bubotka/grpc-chat/gen/pb"
+	gpt "github.com/Bubotka/grpc-chat/pkg/chat-gpt"
 )
 
 func (s *ChatGptServer) Chat(ctx context.Context, req *pb.MessageRequest) (*pb.MessageResponse, error) {
@@ -41,6 +41,7 @@ func (s *ChatGptServer) Chat(ctx context.Context, req *pb.MessageRequest) (*pb.M
 			},
 		},
 	)
+
 	if err != nil {
 		log.Print("Error in server.Chat.CreateChatCompletion(): ", err)
 		return nil, status.Error(codes.Internal, fmt.Sprintf("Error processing prompt: %v", err))

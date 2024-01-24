@@ -3,12 +3,11 @@ package server
 import (
 	"context"
 	"errors"
+	"github.com/sashabaranov/go-openai"
 	"io"
 	"log"
 
-	"github.com/sashabaranov/go-openai"
-
-	"gitlab.com/Alexandrhub/grpc-chat/gen/pb"
+	"github.com/Bubotka/grpc-chat/gen/pb"
 )
 
 func (s *ChatGptServer) ChatStream(messageRequest *pb.MessageRequest, stream pb.ChatService_ChatStreamServer) error {
@@ -16,7 +15,7 @@ func (s *ChatGptServer) ChatStream(messageRequest *pb.MessageRequest, stream pb.
 
 	aiReq := openai.ChatCompletionRequest{
 		Model:     openai.GPT3Dot5Turbo,
-		MaxTokens: 100,
+		MaxTokens: 4000,
 		Messages: []openai.ChatCompletionMessage{
 			{
 				Role:    openai.ChatMessageRoleUser,

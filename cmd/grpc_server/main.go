@@ -9,8 +9,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"gitlab.com/Alexandrhub/grpc-chat/config"
-	"gitlab.com/Alexandrhub/grpc-chat/server"
+	"github.com/Bubotka/grpc-chat/config"
+	"github.com/Bubotka/grpc-chat/server"
 )
 
 func main() {

@@ -3,15 +3,14 @@ package main
 import (
 	"context"
 	"fmt"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 	"io"
 	"log"
 	"strings"
 
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
-
-	"gitlab.com/Alexandrhub/grpc-chat/config"
-	"gitlab.com/Alexandrhub/grpc-chat/gen/pb"
+	"github.com/Bubotka/grpc-chat/config"
+	"github.com/Bubotka/grpc-chat/gen/pb"
 )
 
 func main() {
@@ -22,6 +21,7 @@ func main() {
 			insecure.NewCredentials(),
 		),
 	)
+
 	if err != nil {
 		log.Fatalf("failed to dial: %v", err)
 	}
@@ -34,12 +34,12 @@ func main() {
 		Content: "Hello, write please hello world in golang",
 	}
 
-	// unary, err := client.Chat(ctx, msg)
-	// if err != nil {
-	// 	log.Fatalf("failed to send message: %v", err)
-	// }
-	//
-	// log.Printf("message received: %s", unary.GetContent())
+	unary, err := client.Chat(ctx, msg)
+	if err != nil {
+		log.Fatalf("failed to send message: %v", err)
+	}
+
+	log.Printf("message received: %s", unary.GetContent())
 
 	stream, err := client.ChatStream(ctx, msg)
 	if err != nil {
